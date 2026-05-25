@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics Portfolio | About</title>
+    <meta name="description" content="Personal portfolio of a Robotics Researcher.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glow-bg"></div>
+    <div class="glow-bg-2"></div>
+
+    <nav>
+        <a href="index.html" class="logo">SysBot</a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">01. About</a></li>
+            <li><a href="projects.html">02. Projects</a></li>
+            <li><a href="blogs.html">03. Blogs</a></li>
+            <li><a href="contact.html">04. Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <p class="mono">Initialize sequence...</p>
+            <h1>Building the future of <br><span class="text-gradient">Intelligent Robotics</span></h1>
+            <p class="subtitle">
+                I am a robotics researcher specializing in autonomous navigation, 
+                computer vision, and robotic manipulation. I bridge the gap between 
+                theoretical algorithms and real-world hardware.
+            </p>
+            
+            <div style="margin-top: 1rem;">
+                <a href="projects.html" class="btn btn-primary">View My Work</a>
+                <a href="contact.html" class="btn" style="margin-left: 1rem;">Initialize Contact</a>
+            </div>
+
+            <div class="tech-stack" style="margin-top: 4rem;">
+                <p class="mono" style="width: 100%; margin-bottom: 0.5rem;">Core Parameters (Skills):</p>
+                <span class="tech-tag">ROS 2 / ROS 1</span>
+                <span class="tech-tag">C++ / Python</span>
+                <span class="tech-tag">SLAM & Navigation</span>
+                <span class="tech-tag">Computer Vision (OpenCV)</span>
+                <span class="tech-tag">Machine Learning (PyTorch)</span>
+                <span class="tech-tag">Embedded Systems</span>
+                <span class="tech-tag">Kinematics & Control</span>
+            </div>
+        </section>
+        
+        <section style="margin-top: 5rem;" class="reveal">
+            <h2><span class="mono text-gradient">System.out.print("</span> About Me <span class="mono text-gradient">")</span></h2>
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; align-items: start; margin-top: 2rem;">
+                <div>
+                    <p style="margin-bottom: 1rem; color: var(--text-secondary);">
+                        Hello! My interest in robotics started when I decided to build a line-following robot in high school. 
+                        Since then, my passion has evolved into researching complex autonomous systems that can perceive, 
+                        reason, and act in unstructured environments.
+                    </p>
+                    <p style="margin-bottom: 1rem; color: var(--text-secondary);">
+                        Currently, I am researching multi-agent coordination algorithms and testing them on custom-built UAVs. 
+                        My primary focus is on developing robust perception pipelines that work reliably in edge cases.
+                    </p>
+                    <p style="color: var(--text-secondary);">
+                        When I'm not writing C++ nodes or tuning PID controllers, you can find me writing articles 
+                        about the robotics ecosystem or contributing to open-source robotics software.
+                    </p>
+                </div>
+                <div class="card" style="display: flex; justify-content: center; align-items: center; aspect-ratio: 1; background: rgba(0, 240, 255, 0.02); border-color: rgba(0,240,255,0.2);">
+                    <!-- Placeholder for profile image -->
+                    <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/>
+                        <path d="M8.5 8.5v.01"/>
+                        <path d="M16 15.5v.01"/>
+                        <path d="M12 12v.01"/>
+                        <path d="M11 17a4.5 4.5 0 0 0 7 0"/>
+                        <path d="M13 7a4.5 4.5 0 0 0-7 0"/>
+                    </svg>
+                    <div style="position: absolute; bottom: 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary);">USER_AVATAR.png</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

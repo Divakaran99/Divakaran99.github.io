@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs | Robotics Portfolio</title>
+    <meta name="description" content="Technical articles and research logs.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glow-bg"></div>
+
+    <nav>
+        <a href="index.html" class="logo">SysBot</a>
+        <ul class="nav-links">
+            <li><a href="index.html">01. About</a></li>
+            <li><a href="projects.html">02. Projects</a></li>
+            <li><a href="blogs.html" class="active">03. Blogs</a></li>
+            <li><a href="contact.html">04. Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header style="margin-bottom: 3rem;">
+            <h1 class="text-gradient">Research Logs & Blogs</h1>
+            <p class="mono type-element typewriter" data-text="tail -f /var/log/research.log"></p>
+        </header>
+
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <!-- Blog 1 -->
+            <article class="card reveal" style="display: flex; flex-direction: column; gap: 1rem; cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <span class="mono" style="color: var(--accent-purple);">Oct 24, 2023</span>
+                    <span class="tech-tag">Tutorial</span>
+                </div>
+                <h2><a href="#" style="color: var(--text-primary); text-decoration: none;">Demystifying Coordinate Frames in ROS 2</a></h2>
+                <p style="color: var(--text-secondary);">
+                    Understanding tf2 can be daunting for beginners. In this post, I break down the math behind coordinate transformations and how to effectively manage the TF tree in a complex multi-robot system.
+                </p>
+                <a href="#" class="mono" style="color: var(--accent-cyan); text-decoration: none; margin-top: 0.5rem; display: inline-flex; align-items: center; gap: 5px;">
+                    Read More 
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </article>
+
+            <!-- Blog 2 -->
+            <article class="card reveal" style="display: flex; flex-direction: column; gap: 1rem; cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <span class="mono" style="color: var(--accent-purple);">Aug 12, 2023</span>
+                    <span class="tech-tag">Hardware</span>
+                </div>
+                <h2><a href="#" style="color: var(--text-primary); text-decoration: none;">Building a Custom Motor Controller for Actuators</a></h2>
+                <p style="color: var(--text-secondary);">
+                    Off-the-shelf motor controllers were too bulky for my latest robotic arm design. Here's a deep dive into designing a compact PCB layout using CAN bus communication and an STM32 microcontroller.
+                </p>
+                <a href="#" class="mono" style="color: var(--accent-cyan); text-decoration: none; margin-top: 0.5rem; display: inline-flex; align-items: center; gap: 5px;">
+                    Read More 
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </article>
+
+            <!-- Blog 3 -->
+            <article class="card reveal" style="display: flex; flex-direction: column; gap: 1rem; cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <span class="mono" style="color: var(--accent-purple);">May 03, 2023</span>
+                    <span class="tech-tag">Research</span>
+                </div>
+                <h2><a href="#" style="color: var(--text-primary); text-decoration: none;">Sim2Real Transfer in Deep Reinforcement Learning</a></h2>
+                <p style="color: var(--text-secondary);">
+                    One of the biggest challenges in RL for robotics is the reality gap. I explore techniques like domain randomization and domain adaptation to train robust policies in simulation that perform well on physical hardware.
+                </p>
+                <a href="#" class="mono" style="color: var(--accent-cyan); text-decoration: none; margin-top: 0.5rem; display: inline-flex; align-items: center; gap: 5px;">
+                    Read More 
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </a>
+            </article>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
