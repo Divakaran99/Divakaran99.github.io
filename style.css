@@ -3,7 +3,7 @@
 :root {
     --bg-dark: #07090f;
     --bg-surface: rgba(16, 22, 36, 0.6);
-    --bg-surface-hover: rgba(56, 41, 26, 0.8);
+    --bg-surface-hover: rgba(37, 26, 56, 0.8);
     --accent-orange: #ed7200;
     --accent-yellow: #ffbb00;
     --text-primary: #e2e8f0;
@@ -46,10 +46,10 @@ body::before {
     position: fixed;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(255, 149, 0, 0.15) 0%, rgba(255, 99, 71, 0) 70%);
+    background: radial-gradient(circle, rgba(255, 222, 175, 0.094) 0%, rgba(255, 99, 71, 0) 70%);
     top: -200px;
     left: -200px;
-    border-radius: 50%;
+    border-radius: 25%;
     z-index: -1;
     pointer-events: none;
     animation: drift 20s infinite alternate linear;
