@@ -235,7 +235,7 @@ main {
     transform: translateY(-10px);
     border-color: var(--accent-orange);
     background: var(--bg-surface-hover);
-    box-shadow: 0 10px 30px -15px rgba(255, 99, 71, 0.3);
+    box-shadow: 0 10px 30px -15px rgba(255, 99, 71, 0.085);
 }
 
 /* Specific Page Layouts */
