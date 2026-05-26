@@ -436,11 +436,10 @@ main {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(800px circle at var(--mouse-x, -50vw) var(--mouse-y, -50vh), rgba(0, 240, 255, 0.08), transparent 40%);
+    background: radial-gradient(circle at var(--mouse-x, -50vw) var(--mouse-y, -50vh), rgba(0, 240, 255, 0.2) 0%, transparent 400px);
     pointer-events: none;
     z-index: 9999;
     mix-blend-mode: screen;
-    transition: background 0.1s ease;
 }
 
 /* Responsive */
