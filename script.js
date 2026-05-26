@@ -67,4 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         typeObserver.observe(el);
     });
+
+    // Interactive Cursor Glow
+    const glowOverlay = document.createElement('div');
+    glowOverlay.classList.add('cursor-glow-overlay');
+    document.body.appendChild(glowOverlay);
+
+    document.addEventListener('mousemove', (e) => {
+        glowOverlay.style.setProperty('--mouse-x', `${e.clientX}px`);
+        glowOverlay.style.setProperty('--mouse-y', `${e.clientY}px`);
+    });
 });
