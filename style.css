@@ -276,6 +276,13 @@ main {
     padding: 0.4rem 0.8rem;
     border-radius: 20px;
     border: 1px solid rgba(255, 99, 71, 0.2);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.tech-tag:hover {
+    background: rgba(0, 0, 0, 0.6);
+    border-color: var(--accent-orange);
 }
 
 /* Grid Layouts for Projects & Blogs */
