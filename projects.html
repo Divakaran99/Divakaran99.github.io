@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Robotics Portfolio</title>
-    <meta name="description" content="Robotics and research projects.">
+    <title>Projects | Divakaran Varatharajan</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,12 +11,13 @@
     <div class="glow-bg-2"></div>
 
     <nav>
-        <a href="index.html" class="logo">SysBot</a>
+        <a href="index.html" class="logo">Divakaran</a>
         <ul class="nav-links">
             <li><a href="index.html">01. About</a></li>
-            <li><a href="projects.html" class="active">02. Projects</a></li>
-            <li><a href="blogs.html">03. Blogs</a></li>
-            <li><a href="contact.html">04. Contact</a></li>
+            <li><a href="experience.html">02. Experience</a></li>
+            <li><a href="projects.html" class="active">03. Projects</a></li>
+            <li><a href="publications.html">04. Publications</a></li>
+            <li><a href="contact.html">05. Contact</a></li>
         </ul>
     </nav>
 
@@ -29,101 +29,85 @@
 
         <div class="grid">
             <!-- Project 1 -->
-            <article class="card reveal">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
-                        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
-                        <line x1="12" y1="22" x2="12" y2="15.5"></line>
-                        <polyline points="22 8.5 12 15.5 2 8.5"></polyline>
-                        <polyline points="2 15.5 12 8.5 22 15.5"></polyline>
-                        <line x1="12" y1="2" x2="12" y2="8.5"></line>
-                    </svg>
-                    <div class="project-links" style="margin-top: 0;">
-                        <a href="#" aria-label="GitHub Repository"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-                    </div>
+            <article class="card reveal" onmouseover="this.style.transform='translateY(-10px) scale(1.02)'" onmouseout="this.style.transform='none'">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                    <h3 style="margin-bottom: 0; font-size: 1.2rem;">Robot Audition System optimization for Smooth Human Robot Interaction</h3>
+                    <span class="mono" style="color: var(--accent-purple); font-size: 0.9rem;">2024</span>
                 </div>
-                <h3>Autonomous Quadcopter Swarm</h3>
                 <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                    Developed a decentralized control algorithm for a swarm of 5 micro-quadcopters. Implemented vision-based obstacle avoidance and coordinated formation flying using ROS 2 and PX4.
+                    Design and development of Sound Source Localization system. Sound event detection using TinyML model with custom keyword spotting. Optimum usage of hardware to reduce complexity in robot audition system.
                 </p>
                 <div class="tech-stack" style="margin-top: auto;">
-                    <span class="tech-tag">ROS 2</span>
-                    <span class="tech-tag">C++</span>
-                    <span class="tech-tag">PX4</span>
+                    <span class="tech-tag">STM32</span>
+                    <span class="tech-tag">C</span>
+                    <span class="tech-tag">Tensorflow Lite</span>
+                    <span class="tech-tag">Arduino nano 33 ble</span>
                 </div>
             </article>
 
             <!-- Project 2 -->
-            <article class="card reveal">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="1.5">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <circle cx="12" cy="12" r="4"></circle>
-                        <line x1="21.17" y1="8" x2="12" y2="8"></line>
-                        <line x1="3.95" y1="6.06" x2="8.54" y2="14"></line>
-                        <line x1="10.88" y1="21.94" x2="15.46" y2="14"></line>
-                    </svg>
-                    <div class="project-links" style="margin-top: 0;">
-                        <a href="#" aria-label="GitHub Repository"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-                    </div>
+            <article class="card reveal" onmouseover="this.style.transform='translateY(-10px) scale(1.02)'" onmouseout="this.style.transform='none'">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                    <h3 style="margin-bottom: 0; font-size: 1.2rem;">SINDiB Micromouse Robot</h3>
+                    <span class="mono" style="color: var(--accent-purple); font-size: 0.9rem;">2023</span>
                 </div>
-                <h3>LiDAR-based SLAM Pipeline</h3>
                 <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                    A custom implementation of a Graph SLAM backend integrated with LOAM for feature extraction. Achieved real-time performance on mobile computing hardware for indoor mapping.
+                    Developed for the IEEE Micro-mouse Robot Design Competition (Secured 3rd place out of 160+ teams). Employed the flood-fill algorithm for efficient 16x16 maze-solving. Performed PCB assembly, testing, and PD controller parameters tuning.
                 </p>
                 <div class="tech-stack" style="margin-top: auto;">
-                    <span class="tech-tag">PCL</span>
-                    <span class="tech-tag">GTSAM</span>
-                    <span class="tech-tag">C++</span>
+                    <span class="tech-tag">STM32fxx</span>
+                    <span class="tech-tag">C</span>
+                    <span class="tech-tag">Altium</span>
+                    <span class="tech-tag">JLCPCB</span>
                 </div>
             </article>
 
             <!-- Project 3 -->
-            <article class="card reveal">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-cyan)" stroke-width="1.5">
-                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <path d="M8 13h2"></path>
-                        <path d="M8 17h2"></path>
-                        <path d="M14 13h2"></path>
-                        <path d="M14 17h2"></path>
-                    </svg>
-                    <div class="project-links" style="margin-top: 0;">
-                        <a href="#" aria-label="External Link"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-                    </div>
+            <article class="card reveal" onmouseover="this.style.transform='translateY(-10px) scale(1.02)'" onmouseout="this.style.transform='none'">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                    <h3 style="margin-bottom: 0; font-size: 1.2rem;">IoT based Automated Smart Parking System</h3>
+                    <span class="mono" style="color: var(--accent-purple); font-size: 0.9rem;">2024</span>
                 </div>
-                <h3>6-DOF Robotic Arm Controller</h3>
                 <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                    Designed and built a 6-axis robotic manipulator from scratch. Wrote custom inverse kinematics solvers and trajectory planning algorithms to achieve smooth pick-and-place operations.
+                    Developed hardware & firmware for sensor data transmission to the cloud. Built a machine learning based pipeline for number plate detection and OCR to read vehicle registration numbers.
                 </p>
                 <div class="tech-stack" style="margin-top: auto;">
-                    <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Arduino</span>
-                    <span class="tech-tag">SolidWorks</span>
+                    <span class="tech-tag">YOLO-v8</span>
+                    <span class="tech-tag">SORT</span>
+                    <span class="tech-tag">easyOCR</span>
+                    <span class="tech-tag">Roboflow</span>
                 </div>
             </article>
             
             <!-- Project 4 -->
-            <article class="card reveal">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="1.5">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                        <line x1="8" y1="21" x2="16" y2="21"></line>
-                        <line x1="12" y1="17" x2="12" y2="21"></line>
-                    </svg>
-                    <div class="project-links" style="margin-top: 0;">
-                        <a href="#" aria-label="GitHub Repository"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-                    </div>
+            <article class="card reveal" onmouseover="this.style.transform='translateY(-10px) scale(1.02)'" onmouseout="this.style.transform='none'">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                    <h3 style="margin-bottom: 0; font-size: 1.2rem;">Performance Comparison for Wind Energy Conversion System (WECS)</h3>
+                    <span class="mono" style="color: var(--accent-purple); font-size: 0.9rem;">2022</span>
                 </div>
-                <h3>Vision-Based Grasping Network</h3>
                 <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                    Implemented a deep reinforcement learning model to train a simulated robotic arm to grasp unseen objects. Utilized PyTorch and Isaac Gym for accelerated training.
+                    Compared different MPPT Algorithms (Hill climb search and Incremental conductance). Modelled and analyzed WECS using MATLAB simulink. Implemented MPPT Algorithm Controllers blocks and conducted simulations.
                 </p>
                 <div class="tech-stack" style="margin-top: auto;">
-                    <span class="tech-tag">PyTorch</span>
-                    <span class="tech-tag">Isaac Gym</span>
-                    <span class="tech-tag">RL</span>
+                    <span class="tech-tag">MATLAB Simulink</span>
+                    <span class="tech-tag">MPPT</span>
+                    <span class="tech-tag">Control Systems</span>
+                </div>
+            </article>
+
+            <!-- Project 5 -->
+            <article class="card reveal" onmouseover="this.style.transform='translateY(-10px) scale(1.02)'" onmouseout="this.style.transform='none'">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                    <h3 style="margin-bottom: 0; font-size: 1.2rem;">GSM Controlled Smart Energy Meter</h3>
+                    <span class="mono" style="color: var(--accent-purple); font-size: 0.9rem;">2021</span>
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                    Designed a real-time bill estimator that measures active power, calculates and sends the electricity bill, and allows turning devices on/off via SMS. Acted as Team Leader.
+                </p>
+                <div class="tech-stack" style="margin-top: auto;">
+                    <span class="tech-tag">ATmega328P</span>
+                    <span class="tech-tag">Sim800L</span>
+                    <span class="tech-tag">C++</span>
                 </div>
             </article>
         </div>
