@@ -6,6 +6,38 @@
     <title>Divakaran Varatharajan | Portfolio</title>
     <meta name="description" content="Portfolio of Divakaran Varatharajan - Robotics, Deep Learning, and LLMs.">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Typewriter cursor */
+        #heroSubtitle::after {
+            content: '|';
+            color: var(--accent-orange);
+            animation: blink-cursor 0.55s step-end infinite;
+            margin-left: 2px;
+            font-weight: 300;
+        }
+        #heroSubtitle.typing-done::after {
+            display: none;
+        }
+        @keyframes blink-cursor {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0; }
+        }
+
+        /* Gentle button shake */
+        @keyframes gentle-shake {
+            0%          { transform: translateX(0) rotate(0deg); }
+            15%         { transform: translateX(-4px) rotate(-0.4deg); }
+            30%         { transform: translateX(4px)  rotate(0.4deg); }
+            45%         { transform: translateX(-3px) rotate(-0.3deg); }
+            60%         { transform: translateX(3px)  rotate(0.3deg); }
+            75%         { transform: translateX(-1px) rotate(-0.1deg); }
+            90%         { transform: translateX(1px)  rotate(0.1deg); }
+            100%        { transform: translateX(0) rotate(0deg); }
+        }
+        .btn-shake {
+            animation: gentle-shake 0.55s ease-in-out;
+        }
+    </style>
 </head>
 <body>
     <div class="glow-bg"></div>
@@ -28,12 +60,10 @@
                 <div>
                     <p class="mono">Initialize sequence...</p>
                     <h1 style="font-size: 3.5rem;"><span class="text-gradient">Divakaran Varatharajan</span></h1>
-                    <p class="subtitle" style="font-size: 1.1rem;">
-                        Self-motivated energetic personality with good analytical skills. Willing to step out of the comfort zone and apply knowledge to solve real-world problems in the domains of <strong style="color: var(--text-primary)">Robotics, Deep Learning, and LLMs</strong>.
-                    </p>
+                    <p id="heroSubtitle" class="subtitle" style="font-size: 1.1rem; min-height: 4rem;"></p>
                     
                     <div style="margin-top: 1rem;">
-                        <a href="experience.html" class="btn btn-primary" style="margin-left: 1rem;">View Experience</a>
+                        <a id="viewExpBtn" href="experience.html" class="btn btn-primary" style="margin-left: 1rem;">View Experience</a>
                         <a href="contact.html" class="btn" style="margin-left: 1rem;">Initialize Contact</a>
                     </div>
 
@@ -48,9 +78,9 @@
                     </div>
                 </div>
                 
-                <div class="card profile-card" style="padding: 0; display: flex; justify-content: center; align-items: center; aspect-ratio: 1; background: rgba(255, 99, 71, 0.02); border-color: rgba(255, 99, 71, 0.2); overflow: hidden; border-radius: 50%; max-width: 400px; margin: 0 auto; box-shadow: 0 0 30px rgba(255, 99, 71, 0.05);">
+                <div class="card profile-card" style="padding: 0; display: flex; justify-content: center; align-items: center; aspect-ratio: 1; background: var(--bg-dark); border-color: rgba(255, 99, 71, 0.2); overflow: hidden; border-radius: 50%; max-width: 400px; margin: 0 auto; box-shadow: 0 0 30px rgba(255, 99, 71, 0.05); user-select: none;">
                     <!-- Place your picture in the same folder and name it 'profile.png' or 'profile.jpg' -->
-                    <img src="profile.png" alt="Divakaran Varatharajan" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: opacity 0.3s ease, transform 0.5s ease;" onmouseover="this.style.opacity=1; this.style.transform='scale(1.05)'" onmouseout="this.style.opacity=0.9; this.style.transform='scale(1)'" onerror="this.onerror=null; this.src='profile.jpg'; this.onerror=function(){ this.onerror=null; this.parentElement.innerHTML='<div style=\'text-align:center;\'><svg width=\'80\' height=\'80\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#ff6347\' stroke-width=\'1\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5\'/><path d=\'M8.5 8.5v.01\'/><path d=\'M16 15.5v.01\'/><path d=\'M12 12v.01\'/><path d=\'M11 17a4.5 4.5 0 0 0 7 0\'/><path d=\'M13 7a4.5 4.5 0 0 0-7 0\'/></svg><p style=\'font-family: monospace; color: #94a3b8; font-size: 0.8rem; margin-top: 1rem;\'>Add profile.png<br>to the folder</p></div>'; };">
+                    <img src="profile.png" alt="Divakaran Varatharajan" draggable="false" oncontextmenu="return false" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.9; transition: opacity 0.3s ease, transform 0.5s ease; pointer-events: none;" onerror="this.onerror=null; this.src='profile.jpg'; this.onerror=function(){ this.onerror=null; this.parentElement.innerHTML='<div style=\'text-align:center;\'>\n<svg width=\'80\' height=\'80\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'#ff6347\' stroke-width=\'1\' stroke-linecap=\'round\' stroke-linejoin=\'round\'><path d=\'M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5\'/><path d=\'M8.5 8.5v.01\'/><path d=\'M16 15.5v.01\'/><path d=\'M12 12v.01\'/><path d=\'M11 17a4.5 4.5 0 0 0 7 0\'/><path d=\'M13 7a4.5 4.5 0 0 0-7 0\'/></svg><p style=\'font-family: monospace; color: #94a3b8; font-size: 0.8rem; margin-top: 1rem;\'>Add profile.png<br>to the folder</p></div>'; };">
                 </div>
             </div>
         </section>
@@ -76,5 +106,50 @@
     </main>
 
     <script src="script.js"></script>
+    <script>
+    (function () {
+        /* ── 1. Typewriter for hero subtitle ── */
+        const subtitleEl  = document.getElementById('heroSubtitle');
+        const plainText   = 'Self-motivated energetic personality with good analytical skills. Willing to step out of the comfort zone and apply knowledge to solve real-world problems in the domains of Robotics, Deep Learning, and LLMs.';
+        const finalHTML   = 'Self-motivated energetic personality with good analytical skills. Willing to step out of the comfort zone and apply knowledge to solve real-world problems in the domains of <strong style="color:var(--text-primary)">Robotics, Deep Learning, and LLMs</strong>.';
+        const SPEED_MS    = 18; // ms per character — fast but readable
+        let   charIdx     = 0;
+
+        function typeChar() {
+            if (charIdx < plainText.length) {
+                subtitleEl.textContent = plainText.slice(0, charIdx + 1);
+                charIdx++;
+                setTimeout(typeChar, SPEED_MS);
+            } else {
+                // Swap in the bolded HTML version, remove cursor
+                subtitleEl.innerHTML = finalHTML;
+                subtitleEl.classList.add('typing-done');
+            }
+        }
+
+        // Small delay so the heading renders first
+        setTimeout(typeChar, 500);
+
+        /* ── 2. Gentle shake on "View Experience" every 8 s ── */
+        const expBtn = document.getElementById('viewExpBtn');
+
+        function shakeBtn() {
+            expBtn.classList.remove('btn-shake');   // reset in case it's still there
+            void expBtn.offsetWidth;                // force reflow to restart animation
+            expBtn.classList.add('btn-shake');
+            // Clean up class once the animation ends
+            expBtn.addEventListener('animationend', function handler() {
+                expBtn.classList.remove('btn-shake');
+                expBtn.removeEventListener('animationend', handler);
+            });
+        }
+
+        // First shake after 8 s, then every 8 s
+        setTimeout(function firstShake() {
+            shakeBtn();
+            setInterval(shakeBtn, 8000);
+        }, 8000);
+    })();
+    </script>
 </body>
 </html>

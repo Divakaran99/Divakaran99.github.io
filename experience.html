@@ -4,10 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experience | Divakaran Varatharajan</title>
+    <meta name="description" content="Professional experience, teaching, and leadership of Divakaran Varatharajan.">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── Active role badge ── */
+        .role-active {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: #34d399;
+            background: rgba(52, 211, 153, 0.07);
+            border: 1px solid rgba(52, 211, 153, 0.22);
+            padding: 0.15rem 0.55rem 0.15rem 0.45rem;
+            border-radius: 20px;
+            margin-left: 0.6rem;
+            vertical-align: middle;
+            letter-spacing: 0.5px;
+        }
+        .role-active::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #34d399;
+            flex-shrink: 0;
+            animation: pulse-active 2.2s ease-in-out infinite;
+        }
+        @keyframes pulse-active {
+            0%, 100% { opacity: 1; box-shadow: 0 0 5px rgba(52, 211, 153, 0.8); }
+            50%       { opacity: 0.35; box-shadow: none; }
+        }
+
+        /* ── Current role timeline card ── */
+        .timeline-item-current .timeline-content {
+            border-color: rgba(52, 211, 153, 0.18);
+            box-shadow: inset 3px 0 0 rgba(52, 211, 153, 0.35);
+        }
+        .timeline-item-current .timeline-content:hover {
+            border-color: rgba(52, 211, 153, 0.4);
+        }
+        .timeline-item-current::after {
+            border-color: #34d399 !important;
+            box-shadow: 0 0 8px rgba(52, 211, 153, 0.4);
+        }
+
+        /* ── Section divider label ── */
+        .timeline-group-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            padding: 0.3rem 0 0.3rem 2.8rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.55;
+        }
+    </style>
 </head>
 <body>
     <div class="glow-bg"></div>
+    <div class="glow-bg-2"></div>
 
     <nav>
         <a href="index.html" class="logo">Divakaran</a>
@@ -27,86 +86,123 @@
         </header>
 
         <div class="timeline reveal">
-            <!-- Experience 1 -->
-            <div class="timeline-item">
+
+            <!-- ─── Current Roles ─── -->
+            <p class="timeline-group-label">▸ Current</p>
+
+            <!-- Experience 1 — CURRENT -->
+            <div class="timeline-item timeline-item-current">
                 <div class="timeline-content">
-                    <h3 style="color: var(--text-primary); margin-bottom: 0.2rem;">Lecturer (on contract basis)</h3>
-                    <p style="color: var(--accent-orange); font-family: var(--font-mono); font-size: 0.9rem;">Department of Electrical Engineering - University of Moratuwa</p>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">Dec 2025 – Present | Full-Time</p>
+                    <h3 style="color: var(--text-primary); margin-bottom: 0.2rem;">
+                        Lecturer (on contract basis)
+                    </h3>
+                    <p style="color: var(--accent-orange); font-family: var(--font-mono); font-size: 0.9rem;">
+                        Department of Electrical Engineering — University of Moratuwa
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">
+                        Dec 2025 – Present &nbsp;|&nbsp; Full-Time
+                        <span class="role-active">Active</span>
+                    </p>
                 </div>
             </div>
 
-            <!-- Experience 2 -->
+            <!-- Experience 3 — CURRENT -->
+            <div class="timeline-item timeline-item-current">
+                <div class="timeline-content">
+                    <h3 style="color: var(--text-primary); margin-bottom: 0.2rem;">
+                        Visiting Lecturer
+                    </h3>
+                    <p style="color: var(--accent-orange); font-family: var(--font-mono); font-size: 0.9rem;">
+                        University of Moratuwa
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">
+                        July 2025 – Present &nbsp;|&nbsp; Part-Time
+                        <span class="role-active">Active</span>
+                    </p>
+                    <ul class="list-styled">
+                        <li>EE4214 — Robotics &amp; Control</li>
+                        <li>EE4111 — Industrial Automation</li>
+                        <li>CM3810 — Fuzzy Logic</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ─── Past Roles ─── -->
+            <p class="timeline-group-label" style="margin-top: 2rem;">▸ Past</p>
+
+            <!-- Experience 2 — PAST -->
             <div class="timeline-item">
                 <div class="timeline-content">
                     <h3 style="color: var(--text-primary); margin-bottom: 0.2rem;">Research Assistant</h3>
-                    <p style="color: var(--accent-orange); font-family: var(--font-mono); font-size: 0.9rem;">Intelligent Service Robotics Group - University of Moratuwa</p>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">Aug 2024 – July 2025 | Full-Time</p>
+                    <p style="color: var(--accent-orange); font-family: var(--font-mono); font-size: 0.9rem;">
+                        Intelligent Service Robotics Group — University of Moratuwa
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">
+                        Aug 2024 – July 2025 &nbsp;|&nbsp; Full-Time
+                    </p>
                     <ul class="list-styled">
                         <li>Working on complex task handling of service robots using context awareness.</li>
-                        <li>Working on modifications to mobile robot platforms - MIRob, Intelligent wheelchair.</li>
+                        <li>Working on modifications to mobile robot platforms — MIRob, Intelligent wheelchair.</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Experience 3 -->
-            <div class="timeline-item">
-                <div class="timeline-content">
-                    <h3 style="color: var(--text-primary); margin-bottom: 0.2rem;">Visiting Lecturer</h3>
-                    <p style="color: var(--accent-orange); font-family: var(--font-mono); font-size: 0.9rem;">University of Moratuwa</p>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">July 2025 – Present | Part-Time</p>
-                    <ul class="list-styled">
-                        <li>EE4214 - Robotics & Control</li>
-                        <li>EE4111 - Industrial Automation</li>
-                        <li>CM3810 - Fuzzy Logic</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Experience 4 -->
+            <!-- Experience 4 — PAST -->
             <div class="timeline-item">
                 <div class="timeline-content">
                     <h3 style="color: var(--text-primary); margin-bottom: 0.2rem;">Visiting Instructor</h3>
-                    <p style="color: var(--accent-orange); font-family: var(--font-mono); font-size: 0.9rem;">Robotics and Automation Lab, University of Moratuwa</p>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">July 2024 – June 2025 | Part-Time</p>
+                    <p style="color: var(--accent-orange); font-family: var(--font-mono); font-size: 0.9rem;">
+                        Robotics and Automation Lab — University of Moratuwa
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">
+                        July 2024 – June 2025 &nbsp;|&nbsp; Part-Time
+                    </p>
                     <ul class="list-styled">
-                        <li>EE4214 - Robotics & Control</li>
-                        <li>EE4111 - Industrial Automation</li>
-                        <li>EE4390 - Intelligent systems & Machine Learning</li>
+                        <li>EE4214 — Robotics &amp; Control</li>
+                        <li>EE4111 — Industrial Automation</li>
+                        <li>EE4390 — Intelligent Systems &amp; Machine Learning</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Experience 5 -->
+            <!-- Experience 5 — PAST -->
             <div class="timeline-item">
                 <div class="timeline-content">
                     <h3 style="color: var(--text-primary); margin-bottom: 0.2rem;">Trainee Electronics Engineer</h3>
-                    <p style="color: var(--accent-purple); font-family: var(--font-mono); font-size: 0.9rem;">Vega Innovations (Pvt) Ltd. (Internship)</p>
-                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">Jan 2023 – Jun 2023</p>
+                    <p style="color: var(--accent-orange); font-family: var(--font-mono); font-size: 0.9rem;">
+                        Vega Innovations (Pvt) Ltd. — Internship
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">
+                        Jan 2023 – Jun 2023
+                    </p>
                     <ul class="list-styled">
-                        <li>Designed and developed first prototype of standalone Battery Management System for electric bicycles (Lumala & Rodha).</li>
-                        <li>Designed Electromagnetic Compatibility (EMC) Filter for common mode and differential mode noise using LTspice.</li>
+                        <li>Designed and developed first prototype of standalone Battery Management System for electric bicycles (Lumala &amp; Rodha).</li>
+                        <li>Designed EMC Filter for common mode and differential mode noise using LTspice.</li>
                         <li>Assisted in first generation electric TukTuk battery pack assembly.</li>
                         <li>Market research, PCB design, BOM, Inventory Management.</li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Experience 6 -->
+            <!-- Experience 6 — PAST -->
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3 style="color: var(--text-primary); margin-bottom: 0.2rem;">EXMO Demonstrator - Robot Manipulators</h3>
-                    <p style="color: var(--accent-orange); font-family: var(--font-mono); font-size: 0.9rem;">Robotics and Automation Lab, University of Moratuwa</p>
+                    <h3 style="color: var(--text-primary); margin-bottom: 0.2rem;">EXMO Demonstrator — Robot Manipulators</h3>
+                    <p style="color: var(--accent-orange); font-family: var(--font-mono); font-size: 0.9rem;">
+                        Robotics and Automation Lab — University of Moratuwa
+                    </p>
                     <ul class="list-styled" style="margin-top: 1rem;">
-                        <li>KUKA KR6 R900 6DOF Manipulator & Kinova mico.</li>
+                        <li>KUKA KR6 R900 6DOF Manipulator &amp; Kinova mico.</li>
                         <li>End-effector calibration, Sequence programming.</li>
                     </ul>
                 </div>
             </div>
+
         </div>
 
+        <!-- Leadership -->
         <section style="margin-top: 5rem;" class="reveal">
-            <h2 class="text-gradient">Leadership & Volunteering</h2>
+            <h2 class="text-gradient">Leadership &amp; Volunteering</h2>
             <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));">
                 <div class="card" style="padding: 1.5rem;">
                     <h4 style="color: var(--accent-orange); margin-bottom: 0.5rem;">Reviewer for Conferences</h4>
@@ -117,11 +213,14 @@
                     </ul>
                 </div>
                 <div class="card" style="padding: 1.5rem;">
-                    <h4 style="color: var(--accent-purple); margin-bottom: 0.5rem;">Chairman - Public Relations</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">IEEE PES Students & Young Professionals Committee (2024 & 2025)</p>
-                    
-                    <h4 style="color: var(--accent-purple); margin-bottom: 0.5rem; margin-top: 1.5rem;">IEEE Region 10 Leadership Training</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Marina Bay, Singapore (2022). Interacted with IEEE Top Board members.</p>
+                    <h4 style="color: var(--accent-orange); margin-bottom: 0.5rem;">Chairman — Public Relations</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">
+                        IEEE PES Students &amp; Young Professionals Committee (2024 &amp; 2025)
+                    </p>
+                    <h4 style="color: var(--accent-orange); margin-bottom: 0.5rem; margin-top: 1.5rem;">IEEE Region 10 Leadership Training</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                        Marina Bay, Singapore (2022). Interacted with IEEE Top Board members.
+                    </p>
                 </div>
             </div>
         </section>
