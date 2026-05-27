@@ -4,11 +4,311 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Divakaran Varatharajan</title>
+    <meta name="description" content="Robotics and embedded systems projects by Divakaran Varatharajan — from TinyML robot audition to micromouse maze solvers.">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* ── Modal Overlay ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(7, 9, 15, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* ── Modal Panel ── */
+        .modal-panel {
+            background: rgb(26, 18, 6);
+            border: 1px solid rgba(255, 114, 50, 0.3);
+            border-radius: 18px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 88vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow:
+                0 0 0 1px rgba(255, 114, 50, 0.08),
+                0 30px 80px rgba(0,0,0,0.7),
+                0 0 60px rgba(255, 99, 71, 0.06);
+            transform: scale(0.88) translateY(30px);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 99, 71, 0.3) transparent;
+        }
+        .modal-overlay.active .modal-panel {
+            transform: scale(1) translateY(0);
+        }
+        .modal-panel::-webkit-scrollbar { width: 6px; }
+        .modal-panel::-webkit-scrollbar-track { background: transparent; }
+        .modal-panel::-webkit-scrollbar-thumb { background: rgba(255,99,71,0.3); border-radius: 3px; }
+
+        /* ── Modal Image ── */
+        .modal-image-wrap {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            border-radius: 18px 18px 0 0;
+        }
+        .modal-image-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.75);
+            transition: filter 0.3s;
+        }
+        .modal-image-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 40%, rgb(26, 18, 6) 100%);
+        }
+        .modal-image-badge {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.5rem;
+            z-index: 2;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            background: rgba(255, 99, 71, 0.15);
+            border: 1px solid rgba(255, 99, 71, 0.4);
+            color: var(--accent-orange);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* ── Close Button ── */
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10;
+            background: rgba(7, 9, 15, 0.7);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: var(--text-secondary);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(4px);
+        }
+        .modal-close:hover {
+            background: rgba(255, 99, 71, 0.15);
+            border-color: var(--accent-orange);
+            color: var(--accent-orange);
+            transform: rotate(90deg);
+        }
+
+        /* ── Modal Body ── */
+        .modal-body {
+            padding: 1.8rem 2.2rem 2.4rem;
+        }
+        .modal-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 0.6rem;
+        }
+        .modal-title {
+            font-size: 1.55rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(90deg, #ed7200, #ffbb00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            flex: 1;
+        }
+        .modal-year {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: rgba(255, 114, 50, 0.6);
+            white-space: nowrap;
+            padding-top: 0.3rem;
+        }
+        .modal-divider {
+            height: 1px;
+            background: linear-gradient(90deg, rgba(255, 99, 71, 0.35), transparent);
+            margin: 1rem 0 1.4rem;
+        }
+
+        /* ── Two-column layout ── */
+        .modal-columns {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 2rem;
+        }
+
+        .modal-section-label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--accent-orange);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 0.7rem;
+        }
+        .modal-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+        .modal-highlights {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+        .modal-highlights li {
+            position: relative;
+            padding-left: 1.4rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .modal-highlights li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            line-height: 1.3;
+        }
+
+        /* Right column */
+        .modal-right {}
+        .modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.8rem;
+        }
+        .modal-tag {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--accent-orange);
+            background: rgba(255, 99, 71, 0.07);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 99, 71, 0.25);
+        }
+
+        .modal-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        .modal-link-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 99, 71, 0.2);
+            background: rgba(255, 99, 71, 0.04);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-family: var(--font-mono);
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        .modal-link-btn:hover {
+            border-color: var(--accent-orange);
+            background: rgba(255, 99, 71, 0.1);
+            color: var(--accent-orange);
+            transform: translateX(4px);
+        }
+        .modal-link-btn .link-icon {
+            font-size: 1rem;
+        }
+        .modal-link-btn.disabled {
+            opacity: 0.4;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        /* Status pill */
+        .modal-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1.4rem;
+        }
+        .modal-status.completed {
+            background: rgba(52, 211, 153, 0.08);
+            border: 1px solid rgba(52, 211, 153, 0.25);
+            color: #34d399;
+        }
+        .modal-status.ongoing {
+            background: rgba(251, 191, 36, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            color: #fbbf24;
+        }
+        .modal-status .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        @media (max-width: 680px) {
+            .modal-columns { grid-template-columns: 1fr; }
+            .modal-image-wrap { height: 200px; }
+            .modal-body { padding: 1.2rem 1.4rem 2rem; }
+            .modal-title { font-size: 1.2rem; }
+        }
+
+        /* Card click cursor */
+        .card { cursor: pointer; }
+        .card-click-hint {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: rgba(255, 99, 71, 0.4);
+            margin-top: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.3s;
+        }
+        .card:hover .card-click-hint {
+            color: rgba(255, 99, 71, 0.75);
+        }
+    </style>
 </head>
 <body>
     <div class="glow-bg"></div>
     <div class="glow-bg-2"></div>
+    <div class="cursor-glow-overlay" id="cursorGlow"></div>
 
     <nav>
         <a href="index.html" class="logo">Divakaran</a>
@@ -24,18 +324,19 @@
     <main>
         <header style="margin-bottom: 3rem;">
             <h1 class="text-gradient">Featured Projects</h1>
-            <p class="mono">grep "robotics" ./projects/*</p>
+            <p class="mono">grep "robotics" ./projects/* &nbsp;— click any card to explore</p>
         </header>
 
-        <div class="grid">
+        <div class="grid" id="projectsGrid">
+
             <!-- Project 1 -->
-            <article class="card reveal" onmouseover="this.style.transform='translateY(-10px) scale(1.02)'" onmouseout="this.style.transform='none'">
+            <article class="card reveal" data-project="0">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
                     <h3 style="margin-bottom: 0; font-size: 1.2rem;">Robot Audition System optimization for Smooth Human Robot Interaction</h3>
                     <span class="mono card-year">2024</span>
                 </div>
                 <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                    Design and development of Sound Source Localization system. Sound event detection using TinyML model with custom keyword spotting. Optimum usage of hardware to reduce complexity in robot audition system.
+                    Design and development of Sound Source Localization system. Sound event detection using TinyML model with custom keyword spotting.
                 </p>
                 <div class="tech-stack" style="margin-top: auto;">
                     <span class="tech-tag">STM32</span>
@@ -43,16 +344,17 @@
                     <span class="tech-tag">Tensorflow Lite</span>
                     <span class="tech-tag">Arduino nano 33 ble</span>
                 </div>
+                <div class="card-click-hint">⊕ click to expand details</div>
             </article>
 
             <!-- Project 2 -->
-            <article class="card reveal" onmouseover="this.style.transform='translateY(-10px) scale(1.02)'" onmouseout="this.style.transform='none'">
+            <article class="card reveal" data-project="1">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
                     <h3 style="margin-bottom: 0; font-size: 1.2rem;">SINDiB Micromouse Robot</h3>
                     <span class="mono card-year">2023</span>
                 </div>
                 <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                    Developed for the IEEE Micro-mouse Robot Design Competition (Secured 3rd place out of 160+ teams). Employed the flood-fill algorithm for efficient 16x16 maze-solving. Performed PCB assembly, testing, and PD controller parameters tuning.
+                    Developed for the IEEE Micro-mouse Robot Design Competition (Secured 3rd place out of 160+ teams). Flood-fill maze solving algorithm.
                 </p>
                 <div class="tech-stack" style="margin-top: auto;">
                     <span class="tech-tag">STM32fxx</span>
@@ -60,16 +362,17 @@
                     <span class="tech-tag">Altium</span>
                     <span class="tech-tag">JLCPCB</span>
                 </div>
+                <div class="card-click-hint">⊕ click to expand details</div>
             </article>
 
             <!-- Project 3 -->
-            <article class="card reveal" onmouseover="this.style.transform='translateY(-10px) scale(1.02)'" onmouseout="this.style.transform='none'">
+            <article class="card reveal" data-project="2">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
                     <h3 style="margin-bottom: 0; font-size: 1.2rem;">IoT based Automated Smart Parking System</h3>
                     <span class="mono card-year">2024</span>
                 </div>
                 <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                    Developed hardware & firmware for sensor data transmission to the cloud. Built a machine learning based pipeline for number plate detection and OCR to read vehicle registration numbers.
+                    Developed hardware & firmware for sensor data transmission to the cloud. ML pipeline for number plate detection and OCR.
                 </p>
                 <div class="tech-stack" style="margin-top: auto;">
                     <span class="tech-tag">YOLO-v8</span>
@@ -77,42 +380,272 @@
                     <span class="tech-tag">easyOCR</span>
                     <span class="tech-tag">Roboflow</span>
                 </div>
+                <div class="card-click-hint">⊕ click to expand details</div>
             </article>
-            
+
             <!-- Project 4 -->
-            <article class="card reveal" onmouseover="this.style.transform='translateY(-10px) scale(1.02)'" onmouseout="this.style.transform='none'">
+            <article class="card reveal" data-project="3">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
                     <h3 style="margin-bottom: 0; font-size: 1.2rem;">Performance Comparison for Wind Energy Conversion System (WECS)</h3>
                     <span class="mono card-year">2022</span>
                 </div>
                 <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                    Compared different MPPT Algorithms (Hill climb search and Incremental conductance). Modelled and analyzed WECS using MATLAB simulink. Implemented MPPT Algorithm Controllers blocks and conducted simulations.
+                    Compared different MPPT Algorithms. Modelled and analyzed WECS using MATLAB Simulink with custom controller blocks.
                 </p>
                 <div class="tech-stack" style="margin-top: auto;">
                     <span class="tech-tag">MATLAB Simulink</span>
                     <span class="tech-tag">MPPT</span>
                     <span class="tech-tag">Control Systems</span>
                 </div>
+                <div class="card-click-hint">⊕ click to expand details</div>
             </article>
 
             <!-- Project 5 -->
-            <article class="card reveal" onmouseover="this.style.transform='translateY(-10px) scale(1.02)'" onmouseout="this.style.transform='none'">
+            <article class="card reveal" data-project="4">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
                     <h3 style="margin-bottom: 0; font-size: 1.2rem;">GSM Controlled Smart Energy Meter</h3>
                     <span class="mono card-year">2021</span>
                 </div>
                 <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
-                    Designed a real-time bill estimator that measures active power, calculates and sends the electricity bill, and allows turning devices on/off via SMS. Acted as Team Leader.
+                    Real-time bill estimator measuring active power, calculating electricity bill, and controlling devices via SMS. Team Leader.
                 </p>
                 <div class="tech-stack" style="margin-top: auto;">
                     <span class="tech-tag">ATmega328P</span>
                     <span class="tech-tag">Sim800L</span>
                     <span class="tech-tag">C++</span>
                 </div>
+                <div class="card-click-hint">⊕ click to expand details</div>
             </article>
+
         </div>
     </main>
 
+    <!-- ══════════════════ MODAL ══════════════════ -->
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true">
+        <div class="modal-panel" id="modalPanel">
+            <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+
+            <div class="modal-image-wrap">
+                <span class="modal-image-badge" id="modalBadge">PROJECT</span>
+                <img id="modalImg" src="" alt="Project image">
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-header-row">
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <span class="modal-year" id="modalYear"></span>
+                </div>
+
+                <div id="modalStatusWrap"></div>
+                <div class="modal-divider"></div>
+
+                <div class="modal-columns">
+                    <!-- Left: description + highlights -->
+                    <div class="modal-left">
+                        <p class="modal-section-label">Overview</p>
+                        <p class="modal-description" id="modalDesc"></p>
+
+                        <p class="modal-section-label">Key Highlights</p>
+                        <ul class="modal-highlights" id="modalHighlights"></ul>
+                    </div>
+
+                    <!-- Right: tech + links -->
+                    <div class="modal-right">
+                        <p class="modal-section-label">Tech Stack</p>
+                        <div class="modal-tags" id="modalTags"></div>
+
+                        <p class="modal-section-label">Links</p>
+                        <div class="modal-links" id="modalLinks"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+    // ══ Project Data ══════════════════════════════════════════
+    const projects = [
+        {
+            title: "Robot Audition System Optimization for Smooth Human-Robot Interaction",
+            year: "2024",
+            badge: "ROBOTICS · AI",
+            status: "completed",
+            image: "img_project1.png",
+            description: "A full-stack embedded AI system designed to give robots a sense of hearing. The system integrates a custom Sound Source Localization (SSL) pipeline with a TinyML keyword spotting model running entirely on-device, enabling real-time audio processing without cloud dependency. Optimized for minimal power consumption and low-latency response critical for natural HRI.",
+            highlights: [
+                "Implemented Sound Source Localization (SSL) using microphone array signal processing",
+                "Trained and deployed a TinyML keyword spotting model on Arduino Nano 33 BLE",
+                "Reduced inference latency to under 20ms on constrained MCU hardware",
+                "Integrated STM32 for hardware control and inter-module communication",
+                "Optimized memory footprint for deployment on devices with < 256 KB RAM",
+                "Validated real-time performance in dynamic acoustic environments"
+            ],
+            tags: ["STM32", "C", "TensorFlow Lite", "Arduino Nano 33 BLE", "TinyML", "DSP", "I2S", "MEMS Microphone"],
+            links: [
+                { label: "GitHub Repository", icon: "⌥", url: "#", disabled: false },
+                { label: "Technical Report", icon: "⊡", url: "#", disabled: false },
+                { label: "Demo Video", icon: "▶", url: "#", disabled: true }
+            ]
+        },
+        {
+            title: "SINDiB Micromouse Robot",
+            year: "2023",
+            badge: "ROBOTICS · COMPETITION",
+            status: "completed",
+            image: "img_project2.png",
+            description: "An autonomous maze-solving robot built for the IEEE Micromouse Competition. The robot independently navigates a 16×16 maze using the Flood-Fill algorithm, mapping unknown terrain and finding the optimal path to the center. The entire hardware stack — from PCB design to firmware — was developed in-house, earning 3rd place among 160+ competing teams.",
+            highlights: [
+                "Secured 3rd place out of 160+ teams at the IEEE Micromouse Competition",
+                "Implemented Flood-Fill algorithm for dynamic 16×16 maze solving",
+                "Custom two-layer PCB designed in Altium Designer, manufactured via JLCPCB",
+                "PD controller tuned for smooth differential drive motor control",
+                "Infrared sensor array for real-time wall detection and distance measurement",
+                "Full system integration from schematic capture to firmware deployment"
+            ],
+            tags: ["STM32F4xx", "C", "Altium Designer", "JLCPCB", "IR Sensors", "PD Controller", "Differential Drive", "PWM"],
+            links: [
+                { label: "GitHub Repository", icon: "⌥", url: "#", disabled: false },
+                { label: "PCB Schematics", icon: "⊡", url: "#", disabled: false },
+                { label: "Competition Video", icon: "▶", url: "#", disabled: false }
+            ]
+        },
+        {
+            title: "IoT-based Automated Smart Parking System",
+            year: "2024",
+            badge: "IoT · COMPUTER VISION",
+            status: "completed",
+            image: "img_project3.png",
+            description: "An end-to-end intelligent parking management system combining embedded IoT hardware with a cloud-connected computer vision pipeline. The system autonomously detects vehicles, reads license plates using OCR, and tracks occupancy in real-time. Hardware nodes transmit sensor data to the cloud via MQTT, while YOLO-v8 + SORT handles vehicle detection and tracking at the edge.",
+            highlights: [
+                "Deployed YOLOv8 model for real-time vehicle detection with > 92% mAP",
+                "Integrated EasyOCR for license plate character recognition pipeline",
+                "SORT (Simple Online and Realtime Tracking) for multi-vehicle tracking",
+                "Custom firmware for IoT sensor nodes with MQTT cloud data transmission",
+                "Roboflow used for dataset annotation and model training pipeline",
+                "Scalable architecture supporting multiple camera and sensor zones"
+            ],
+            tags: ["YOLOv8", "SORT", "EasyOCR", "Roboflow", "MQTT", "Python", "OpenCV", "IoT Firmware", "Cloud"],
+            links: [
+                { label: "GitHub Repository", icon: "⌥", url: "#", disabled: false },
+                { label: "System Architecture", icon: "⊡", url: "#", disabled: false },
+                { label: "Live Demo", icon: "▶", url: "#", disabled: true }
+            ]
+        },
+        {
+            title: "Performance Comparison for Wind Energy Conversion System (WECS)",
+            year: "2022",
+            badge: "ENERGY · SIMULATION",
+            status: "completed",
+            image: "img_project4.png",
+            description: "A comprehensive simulation study comparing two Maximum Power Point Tracking (MPPT) algorithms — Hill Climb Search (HCS) and Incremental Conductance (INC) — for wind energy systems. A full WECS model was built in MATLAB Simulink including turbine aerodynamics, generator model, and power converter stages, with custom controller blocks for each algorithm.",
+            highlights: [
+                "Modelled full WECS system including wind turbine, PMSG, and boost converter",
+                "Implemented Hill Climb Search (HCS) and Incremental Conductance (INC) MPPT controllers",
+                "Quantitative performance comparison: tracking speed, efficiency, and steady-state oscillation",
+                "INC algorithm demonstrated 8% lower steady-state power ripple vs HCS",
+                "Simulink simulation validated across varying wind speed profiles (5–15 m/s)",
+                "Results tabulated for academic presentation and review"
+            ],
+            tags: ["MATLAB", "Simulink", "MPPT", "Power Electronics", "Control Systems", "PMSG", "Boost Converter"],
+            links: [
+                { label: "Simulink Model Files", icon: "⌥", url: "#", disabled: false },
+                { label: "Research Report", icon: "⊡", url: "#", disabled: false },
+                { label: "Presentation Slides", icon: "▶", url: "#", disabled: true }
+            ]
+        },
+        {
+            title: "GSM Controlled Smart Energy Meter",
+            year: "2021",
+            badge: "EMBEDDED · IoT",
+            status: "completed",
+            image: "img_project5.png",
+            description: "A standalone smart energy metering system capable of real-time power measurement, automated billing calculation, and remote appliance control via SMS commands. Built around ATmega328P with a SIM800L GSM module, the system sends monthly bills and usage alerts to registered phone numbers and allows the consumer to remotely switch loads via SMS — no internet required.",
+            highlights: [
+                "Real-time active power measurement using ACS712 current sensor + ZMPT101B voltage sensor",
+                "Automatic monthly bill generation and SMS dispatch via SIM800L GSM module",
+                "Remote appliance ON/OFF control through parsed SMS command interface",
+                "LCD display for live voltage, current, power, and accumulated units",
+                "Overvoltage and overcurrent protection with relay-based circuit breaker",
+                "Led 4-member team as Team Leader through design, build, and testing phases"
+            ],
+            tags: ["ATmega328P", "SIM800L", "C++", "Arduino IDE", "GSM", "ACS712", "ZMPT101B", "LCD", "Relay"],
+            links: [
+                { label: "GitHub Repository", icon: "⌥", url: "#", disabled: false },
+                { label: "Circuit Schematic", icon: "⊡", url: "#", disabled: false },
+                { label: "Demo Video", icon: "▶", url: "#", disabled: false }
+            ]
+        }
+    ];
+
+    // ══ Modal Logic ════════════════════════════════════════════
+    const overlay   = document.getElementById('modalOverlay');
+    const panel     = document.getElementById('modalPanel');
+    const closeBtn  = document.getElementById('modalClose');
+
+    function openModal(index) {
+        const p = projects[index];
+
+        document.getElementById('modalImg').src        = p.image;
+        document.getElementById('modalImg').alt        = p.title;
+        document.getElementById('modalBadge').textContent = p.badge;
+        document.getElementById('modalTitle').textContent = p.title;
+        document.getElementById('modalYear').textContent  = p.year;
+        document.getElementById('modalDesc').textContent  = p.description;
+
+        // Status pill
+        const statusWrap = document.getElementById('modalStatusWrap');
+        statusWrap.innerHTML = `
+            <span class="modal-status ${p.status}">
+                <span class="dot"></span>
+                ${p.status === 'completed' ? 'Completed' : 'Ongoing'}
+            </span>`;
+
+        // Highlights
+        const hl = document.getElementById('modalHighlights');
+        hl.innerHTML = p.highlights.map(h => `<li>${h}</li>`).join('');
+
+        // Tags
+        const tags = document.getElementById('modalTags');
+        tags.innerHTML = p.tags.map(t => `<span class="modal-tag">${t}</span>`).join('');
+
+        // Links
+        const links = document.getElementById('modalLinks');
+        links.innerHTML = p.links.map(l => `
+            <a href="${l.url}" class="modal-link-btn ${l.disabled ? 'disabled' : ''}" ${!l.disabled ? 'target="_blank"' : ''}>
+                <span class="link-icon">${l.icon}</span> ${l.label}
+                ${l.disabled ? '<span style="margin-left:auto;font-size:0.7rem;opacity:0.5">coming soon</span>' : ''}
+            </a>`).join('');
+
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        panel.scrollTop = 0;
+    }
+
+    function closeModal() {
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Card click
+    document.querySelectorAll('.card[data-project]').forEach(card => {
+        card.addEventListener('click', () => {
+            openModal(parseInt(card.dataset.project));
+        });
+    });
+
+    // Close button
+    closeBtn.addEventListener('click', closeModal);
+
+    // Click outside
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+    });
+
+    // Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+    });
+    </script>
 </body>
 </html>
